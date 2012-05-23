@@ -1,0 +1,37 @@
+<?php
+
+	echo "Hello World</br>";
+	$myCategories = simplexml_load_file('main.xml');
+	
+	
+	echo "<ul id=\"categorylist\">\n";
+	
+	$i = 0;
+
+	foreach ($myCategories as $catInfo):
+
+		$test=$myCategories->category[$i]['typ'];
+		$marke=$catInfo->marke;
+		$ps=$catInfo->ps;
+		$kraftstoff=$catInfo->kraftstoff;
+		$farbe=$catInfo->farbe;
+		$typ=$catInfo->marke['typ'];
+		echo "<li>", $test, " ",$marke," ",$kraftstoff," ", $ps, " ", $typ,"</li>\n";
+		$i++;
+	endforeach;
+	
+	echo "</ul>";
+	
+	
+    
+?>
+
+/**
+ * this script generates the main content of a category-page.
+ * in the first step, it opens the main xml-file and reads the content.
+ * in the second step it parses thru the needed category and displays the content.
+ * 
+ * Author: Cornelius
+ * Date:
+ */
+
