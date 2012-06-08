@@ -1,26 +1,10 @@
-<?
-    /**
-     * login6.php
-     *
-     * A simple login module that checks a username and password
-     * against a MySQL table with no encryption by asking for a binary answer.
-     *
-     * David J. Malan
-     * Computer Science E-75
-     * Harvard Extension School
-     */
-
+<?php
+ 
+	
     // enable sessions
     session_start();
 
-    // connect to database
-    if (($connection = mysql_connect("localhost", "baier", "aro4wp")) === FALSE)
-        die("Could not connect to database");
-
-    // select database
-    if (mysql_select_db("test", $connection) === FALSE)
-        die("Could not select database");
-
+    require_once("common.php");
     // if username and password were submitted, check them
     if (isset($_POST["user"]) && isset($_POST["pass"]))
     {
@@ -38,8 +22,7 @@
         // check whether we found a row
         if (mysql_num_rows($result) == 1)
         {
-        	echo "welcome " . $_POST["user"];
-        	
+        	echo "login klappt";
             // remember that user's logged in
             $_SESSION["authenticated"] = TRUE;
 
@@ -51,7 +34,7 @@
             exit;
         }
         else{
-        	echo "fuck off";
+        	echo "geht nicht";
         }
     }
 ?>
